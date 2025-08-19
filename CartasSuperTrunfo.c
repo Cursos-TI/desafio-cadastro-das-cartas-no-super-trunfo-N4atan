@@ -1,10 +1,5 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-
 
 int main() {
     char  c1_uf       , c2_uf;
@@ -16,6 +11,7 @@ int main() {
     int   c1_pt       , c2_pt;
     float c1_dp       , c2_dp;
     float c1_pibC     , c2_pibC; //Necessário uma validação, se PIB é milhões ou bilhões.
+    float c1_super    , c2_super;
 
     printf("\n ----- Cadastro de Carta 1 ----- \n");
     printf("\n 1.1 - De qual estado ela é?              [ A - H ]: ");
@@ -41,9 +37,9 @@ int main() {
 
     c1_dp   = (float) c1_pop / c1_km;
     c1_pibC = (float) c1_pib / c1_pop;
+    c1_super = (float) c1_pop + c1_km + c1_pib + c1_pt + c1_pibC + (1 / c1_dp);
 
-    printf(
-        "\n ----- Exibindo Carta 1 ----- \n"
+    printf("\n ----- Exibindo Carta 1 ----- \n"
         "-> Código: %c%d \n"
         "-> Estado: %c\n"
         "-> Nome: %s \n"
@@ -52,7 +48,8 @@ int main() {
         "-> PIB: %.2f  \n"
         "-> Qtd Pontos Turisticos: %d  \n"
         "-> Densidade Populacional: %.2f hab/km² \n"
-        "-> PIB per Capita: %.2f  \n",
+        "-> PIB per Capita: %f  \n"
+        "-> Super Poder: %.2f  \n",
         c1_uf, c1_id,
         c1_uf,
         c1_nome,
@@ -61,7 +58,8 @@ int main() {
         c1_pib,
         c1_pt,
         c1_dp,
-        c1_pibC
+        c1_pibC,
+        c1_super
     );
 
     printf("\n ----- Cadastro de Carta 2 ----- \n");
@@ -88,9 +86,9 @@ int main() {
 
     c2_dp   = (float) c2_pop / c2_km;
     c2_pibC = (float) c2_pib / c2_pop;
+    c2_super = c2_pop + c2_km + c2_pib + c2_pt + c2_pibC + (1 / c2_dp);
 
-    printf(
-        "\n ----- Exibindo Carta 2 ----- \n"
+    printf("\n ----- Exibindo Carta 2 ----- \n"
         "-> Código: %c%d \n"
         "-> Estado: %c\n"
         "-> Nome: %s \n"
@@ -99,7 +97,8 @@ int main() {
         "-> PIB: %.2f  \n"
         "-> Qtd Pontos Turisticos: %d  \n"
         "-> Densidade Populacional: %.2f hab/km² \n"
-        "-> PIB per Capita: %.2f  \n",
+        "-> PIB per Capita: %f  \n"
+        "-> Super Poder: %.2f  \n",
         c2_uf, c2_id,
         c2_uf,
         c2_nome,
@@ -108,8 +107,20 @@ int main() {
         c2_pib,
         c2_pt,
         c2_dp,
-        c2_pibC
+        c2_pibC,
+        c2_super
     );
+
+    // --- Comparações ---
+    printf("\n ----- Comparação das Cartas ----- \n");
+    printf("--> Carta 1 (1) |=| Carta 2 (0) <-- \n");
+    printf("--> População: %d \n"                , c1_pop   > c2_pop   );
+    printf("--> Área: %d \n"                     , c1_km    > c2_km    );
+    printf("--> PIB: %d \n"                      , c1_pib   > c2_pib   );
+    printf("--> Pontos Turísticos: %d \n"        , c1_pt    > c2_pt    );
+    printf("--> PIB per Capita: %d \n"           , c1_pibC  > c2_pibC  );
+    printf("--> Densidade Populacional: %d \n"   , c1_dp    < c2_dp    );
+    printf("--> Super Poder: %d \n"              , c1_super > c2_super );
 
     return 0;
 }
