@@ -5,7 +5,7 @@ int main() {
     char  c1_uf       , c2_uf;
     char  c1_nome[30] , c2_nome[30];
     int   c1_id       , c2_id;
-    int   c1_pop      , c2_pop;
+    unsigned long int   c1_pop      , c2_pop;
     float c1_km       , c2_km;
     float c1_pib      , c2_pib;
     int   c1_pt       , c2_pt;
